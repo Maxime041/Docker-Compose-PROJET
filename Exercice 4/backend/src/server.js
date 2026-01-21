@@ -7,7 +7,7 @@ import dbRouter from './routes/users.js';
 const app = express();
 const PORT = process.env.PORT_BACKEND || 5000;
 
-app.use(cors({ origin: process.env.FRONTEND_URL || '*' }));
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:3000' }));
 app.use(express.json());
 
 app.use('/api/tor', torRouter);     
