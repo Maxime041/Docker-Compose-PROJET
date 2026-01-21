@@ -4,7 +4,7 @@ PROJECT_NAME = exercice2
 NODE_MODULES_BACK = backend/node_modules
 NODE_MODULES_FRONT = frontend/node_modules
 
-.PHONY: all clean fclean re purge logs
+.PHONY: all clean fclean re purge
 
 all:
 	$(COMPOSE) up -d --build
