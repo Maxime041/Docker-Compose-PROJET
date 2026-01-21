@@ -6,7 +6,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_URL = 'http://localhost:5000/api';
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost';
+  const backendPort = import.meta.env.VITE_PORT_BACKEND || '5000';
+  
+  const API_URL = `${backendUrl}:${backendPort}/api`;
 
   const fetchTorUsers = async () => {
     setLoading(true);
@@ -62,7 +65,7 @@ function App() {
     fetchDbUsers();
   }, []);
 
-return (
+  return (
     <div style={{ padding: '20px', fontFamily: 'Arial', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
       <h1>Projet Final : Tor + PostgreSQL</h1>
 
@@ -78,7 +81,6 @@ return (
 
         {torUsers.length > 0 && (
           <table border="1" style={{ width: '100%', borderCollapse: 'collapse', margin: '0 auto' }}>
-            <thead>
               <tr style={{ background: '#eee' }}>
                 <th style={{ padding: '10px' }}>Photo</th>
                 <th style={{ padding: '10px' }}>Nom</th>
@@ -86,8 +88,6 @@ return (
                 <th style={{ padding: '10px' }}>Pays</th>
                 <th style={{ padding: '10px' }}>Action</th>
               </tr>
-            </thead>
-            <tbody>
               {torUsers.map((user, index) => (
                 <tr key={index}>
                   <td style={{ padding: '10px', textAlign: 'center' }}>
@@ -103,7 +103,6 @@ return (
                   </td>
                 </tr>
               ))}
-            </tbody>
           </table>
         )}
       </div>
@@ -112,15 +111,12 @@ return (
         <h2>2. Contenu Base de Données</h2>
         {dbUsers.length === 0 ? <p>Aucune donnée enregistrée.</p> : (
           <table border="1" style={{ width: '100%', borderCollapse: 'collapse', margin: '0 auto' }}>
-            <thead>
               <tr style={{ background: '#eee' }}>
                 <th style={{ padding: '10px' }}>ID</th>
                 <th style={{ padding: '10px' }}>Nom</th>
                 <th style={{ padding: '10px' }}>Mot de passe</th>
                 <th style={{ padding: '10px' }}>Action</th>
               </tr>
-            </thead>
-            <tbody>
               {dbUsers.map((user) => (
                 <tr key={user.id}>
                   <td style={{ padding: '10px' }}>{user.id}</td>
@@ -131,7 +127,6 @@ return (
                   </td>
                 </tr>
               ))}
-            </tbody>
           </table>
         )}
       </div>
