@@ -13,8 +13,10 @@
     "axios": "^1.13.2",
     "cors": "^2.8.5",
     "express": "^5.2.1",
+    "pg": "^8.17.2",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
     "socks-proxy-agent": "^8.0.5"
   },
-  "devDependencies": {},
   "description": ""
 }
